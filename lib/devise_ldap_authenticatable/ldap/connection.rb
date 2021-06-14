@@ -13,6 +13,7 @@ module Devise
 
         # Allow `ssl: true` shorthand in YAML, but enable more control with `encryption`
         ldap_config["ssl"] = :simple_tls if ldap_config["ssl"] === true
+	ldap_options[:connect_timeout] = ldap_config["connect_timeout"] if ldap_config["connect_timeout"]
         ldap_options[:encryption] = ldap_config["ssl"].to_sym if ldap_config["ssl"]
         ldap_options[:encryption] = ldap_config["encryption"] if ldap_config["encryption"]
 
